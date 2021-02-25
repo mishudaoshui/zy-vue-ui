@@ -1,0 +1,13 @@
+/**
+ * 设置背景图
+ * @param 宽度
+ * @param 高度（default:等宽）
+ * @param 背景图地址
+ * @param 自定义背景尺寸
+ */
+@mixin backImage($width,$height,$url) {
+  width: $width;
+  height: $height;
+  background: url($url) no-repeat center;
+  background-size: 100% 100%;
+}

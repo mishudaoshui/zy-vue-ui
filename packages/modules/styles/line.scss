@@ -1,0 +1,16 @@
+/**
+ * 超出指定行数展示省略号，参数是展示的行数
+ * @include ellipsis()
+ * @include ellipsis(2)
+ */
+@mixin ellipsis($line: 1){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if ($line == 1) {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  }
+}

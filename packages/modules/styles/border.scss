@@ -1,0 +1,106 @@
+/**
+ * 使用
+ * 1.全边框
+ *    @include border($color, $radius: 0px, $width: 1px, $style: solid)
+ * 2.上下左右边框
+ *    @include border-top($color, $width: 1px, $style: solid)
+ */
+
+@mixin min-device-pixel-ratio($scale2, $scale3) {
+  @media screen and (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2) {
+    transform: $scale2;
+  }
+  @media screen and (min-device-pixel-ratio: 3),
+    (-webkit-min-device-pixel-ratio: 3) {
+    transform: $scale3;
+  }
+}
+
+%border-position {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  content: ' ';
+  transform-origin: 0 0;
+}
+
+// 全边框
+@mixin border($color, $radius: 0px, $width: 1px, $style: solid) {
+  position: relative;
+  &::before {
+    @extend %border-position;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $width $style $color;
+    border-radius: $radius;
+    @include min-device-pixel-ratio(scale(0.5), scale(0.5));
+    @media screen and (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2) {
+      width: 200%;
+      height: 200%;
+      border-radius: $radius * 2;
+    }
+    @media screen and (min-device-pixel-ratio: 3),
+      (-webkit-min-device-pixel-ratio: 3) {
+      width: 200%;
+      height: 200%;
+      border-radius: $radius * 2;
+    }
+  }
+}
+
+// 上边框
+@mixin border-top($color, $width: 1px, $style: solid) {
+  position: relative;
+  &::before {
+    @extend %border-position;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-top: $width $style $color;
+    @include min-device-pixel-ratio(scaleY(0.5), scaleY(0.5));
+  }
+}
+
+// 下边框
+@mixin border-bottom($color, $width: 1px, $style: solid) {
+  position: relative;
+  &::after {
+    @extend %border-position;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 1px;
+    border-bottom: $width $style $color;
+    @include min-device-pixel-ratio(scaleY(0.5), scaleY(0.5));
+  }
+}
+
+// 左边框
+@mixin border-left($color, $width: 1px, $style: solid) {
+  position: relative;
+  &::after {
+    @extend %border-position;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-left: $width $style $color;
+    @include min-device-pixel-ratio(scaleX(0.5), scaleX(0.5));
+  }
+}
+
+// 右边框
+@mixin border-right($color, $width: 1px, $style: solid) {
+  position: relative;
+  &::before {
+    @extend %border-position;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-right: $width $style $color;
+    @include min-device-pixel-ratio(scaleX(0.5), scaleX(0.5));
+  }
+}

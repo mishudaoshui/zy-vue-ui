@@ -1,0 +1,51 @@
+/*
+  说明:
+  svg 图片引入，使用font-class 形式
+
+  在使用svg时，只需要 <span class="iconfont iconxxx"></span>
+
+  比如使用左箭头 ： <span class="iconfont iconleft-arrow"></span>
+
+*/
+@font-face {
+  font-family: 'iconfont'; /* project id 2385625 */
+  src: url('//at.alicdn.com/t/font_2385625_grom7l0gj34.eot');
+  src: url('//at.alicdn.com/t/font_2385625_grom7l0gj34.eot?#iefix')
+      format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2385625_grom7l0gj34.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2385625_grom7l0gj34.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2385625_grom7l0gj34.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2385625_grom7l0gj34.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconleft-arrow:before {
+  content: '\e633';
+}
+
+.iconup-arrow:before {
+  content: '\e634';
+}
+
+.icondown-arrow:before {
+  content: '\e635';
+}
+
+.iconright-arrow:before {
+  content: '\e636';
+}
+
+.iconclose:before {
+  content: '\e63a';
+}
+
+.iconcircle-close:before {
+  content: '\e647';
+}
